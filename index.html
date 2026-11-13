@@ -1,0 +1,316 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday! 🎂</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Trebuchet MS', sans-serif;
+    background: linear-gradient(135deg, #190b35, #4b176d, #a83279);
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.emoji {
+    font-size: 75px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+h1 {
+    font-size: clamp(35px, 8vw, 58px);
+    margin: 20px 0;
+    color: #ffdf70;
+    text-shadow: 0 0 20px #ff69b4;
+}
+
+.name {
+    color: #ff8acb;
+}
+
+.subtitle {
+    font-size: 18px;
+    line-height: 1.7;
+    margin: 20px auto;
+    max-width: 450px;
+}
+
+.card {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 25px;
+    padding: 30px 20px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+button {
+    border: none;
+    padding: 15px 30px;
+    margin-top: 25px;
+    border-radius: 50px;
+    background: linear-gradient(45deg, #ff4fa3, #ffb347);
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 5px 20px #ff4fa355;
+}
+
+button:hover {
+    transform: scale(1.08);
+}
+
+#surprise {
+    display: none;
+    margin-top: 25px;
+    font-size: 20px;
+    line-height: 1.7;
+    animation: fadeIn 1s ease;
+}
+
+.balloon {
+    position: fixed;
+    bottom: -120px;
+    font-size: 45px;
+    animation: float 9s linear infinite;
+    z-index: 1;
+    pointer-events: none;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0); }
+    100% { transform: translateY(-120vh) rotate(25deg); }
+}
+
+.confetti {
+    position: fixed;
+    top: -15px;
+    width: 9px;
+    height: 14px;
+    z-index: 10;
+    pointer-events: none;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+.footer {
+    margin-top: 30px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+@media(max-width: 480px) {
+    .container {
+        padding: 20px 5px;
+    }
+
+    .card {
+        padding: 25px 15px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+
+    .emoji {
+        font-size: 60px;
+    }
+}
+
+.birthday-image {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border-radius: 20px;
+    margin: 20px auto;
+    display: block;
+    border: 4px solid #ffdf70;
+    box-shadow: 0 0 25px #ff69b4;
+    animation: fadeIn 1.5s ease;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="emoji">🎂</div>
+
+        <h1>Happy Birthday!</h1>
+
+        <h2 class="name" id="birthdayName">
+            Someone Special 💖
+        </h2>
+
+        <p class="subtitle">
+            Today is your special day! 🌸
+            May your life be filled with endless happiness,
+            beautiful memories, success and love.
+            Keep shining and smiling! ✨
+        </p>
+
+        <h2>🎉 Make a Wish! 🎉</h2>
+
+        <button onclick="showSurprise()">
+            🎁 Open Your Surprise
+
+            
+        </button>
+
+        <div id="surprise" style="display:none;">
+
+    <h2>🎉 A Special Birthday Surprise! 🎉</h2>
+
+    <img
+        src="image.jpg"
+        alt="Happy Birthday"
+        class="birthday-image"  
+    >
+
+    <p>
+        💖 Happy birthday! May this new year of your life bring peace, purpose, and happiness.
+    </p>
+
+</div>
+        
+
+    </div>
+
+    <div class="footer">
+        Made with ❤️ just for you!
+    </div>
+
+</div>
+
+<script>
+
+// Change the birthday person's name here
+document.getElementById("birthdayName").innerText =
+    "Someone Special 💖";
+
+// Surprise message
+function showSurprise() {
+    document.getElementById("surprise").style.display = "block";
+    launchConfetti();
+}
+
+// Confetti animation
+function launchConfetti() {
+    const colors = [
+        "#ff4fa3",
+        "#ffdf70",
+        "#00e5ff",
+        "#aaff80",
+        "#ffffff",
+        "#b388ff"
+    ];
+
+    for (let i = 0; i < 150; i++) {
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.backgroundColor =
+            colors[Math.floor(Math.random() * colors.length)];
+
+        confetti.style.animationDuration =
+            (Math.random() * 3 + 2) + "s";
+
+        confetti.style.animationDelay =
+            Math.random() * 1.5 + "s";
+
+        confetti.style.borderRadius =
+            Math.random() > 0.5 ? "50%" : "0";
+
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+            confetti.remove();
+        }, 7000);
+    }
+}
+
+// Floating balloons
+function createBalloon() {
+    const balloon = document.createElement("div");
+    balloon.classList.add("balloon");
+
+    const balloons = ["🎈", "🎈", "🎀", "🎈"];
+    balloon.innerText =
+        balloons[Math.floor(Math.random() * balloons.length)];
+
+    balloon.style.left = Math.random() * 100 + "vw";
+    balloon.style.animationDuration =
+        (Math.random() * 5 + 7) + "s";
+
+    document.body.appendChild(balloon);
+
+    setTimeout(() => balloon.remove(), 13000);
+}
+
+// Create balloons continuously
+setInterval(createBalloon, 1200);
+
+// Initial celebration
+setTimeout(launchConfetti, 500);
+
+
+function showSurprise() {
+    document.getElementById("surprise").style.display = "block";
+
+    launchConfetti();
+}
+</script>
+
+</body>
+</html>
